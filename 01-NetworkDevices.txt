@@ -1,0 +1,152 @@
+Hosts - any device which sends or receives traffic.
+A computer, laptop, phone, printer, or cloud server can be a host.
+Even TVs, speakers, and thermostats can be hosts.
+As long as they send or receive traffic.
+
+There are two categories of hosts.
+Clients - they initiate requests
+Servers - they respond to requests
+
+A client server relationship can be a computer (client) going on a website (server).
+The website could then need to be updated from its database that it gets its information
+from, so then it would be a client to the database (server).
+
+
+A server is simply a computer with software installed which
+responds to specific requests.
+
+
+---------
+
+Each host has an ip address. Each host must have one if it wants
+to communicate on the internet. Just like how people need phone
+numbers to talk to each other.
+
+When a client is requesting something from a server, it stamps
+its one ip address and also the ip address of the server. This is
+the src and dst (source and destination).
+
+Everything sent on the internet is going to have this src and dst
+information.
+
+IP address are made of 32 bits. This is a combo of 32 ones and zeros. Then,
+we take the 32 bits and convert it to 4 octets. Then, we take those octets
+and convert those to decimals. This is how we make IP addresses, like:
+
+136.22.17.98      Highest number we can make in a section in 255.
+
+ACME corp. could own all IPs that start with 10.x.x.x. New York locations
+could be 10.20.x.x, and London locations could be 10.30.x.x. Sales could
+be 10.20.55.x, and engineering could be 10.20.66.x. There are categories
+of IPs that give information about who could be hosting and where they could
+be hosting.
+
+
+-----
+
+Anytime you connect two hosts, you have a network.
+Before we had networks, you had to use USBs or discs to transfer
+things PHYSICALLY between computers.
+
+A network is what transports traffic between hosts.
+
+Networks are groupings of hosts which require similar connectivity.
+This is like however many devices you have at home at are all under
+the same wifi. That is one network. Another network would be the wifi
+at a coffee shop that has many hosts connecting to it. A school could
+had multiple networks inside it, representing each classroom.
+
+All these networks can interact with each other(working from home on
+your wifi to reach your company work, or working from a coffee shop
+to log in to school documents) through the internet. Internet is
+literally a space where many networks interact with each other.
+
+
+-----PART 2-----
+
+Remember that a network is a line between two hosts that allows traffic.
+Data as it crosses the network on its way to the other host decays as it
+travels. So the longer distance the network, it could decay more.
+
+You could lose a network if you are trying to connect two computers in
+opposite buildings. A way to fix this is by putting a repeater between them.
+
+A repeater regenerates signals. Anything that comes through one end simply
+gets regenerated out the other end.
+
+So far, we've been talking about connecting two hosts together. What if we
+have a third or fourth host to connect? Connecting all of them individually to
+each other isn't as effective as just having one thing in the center to connect
+everything to. This is where hubs, bridges, and switchs come into play.
+
+------
+
+A hub is nothing more than a multi-port repeater. So, if computer 1 wants to
+communicate with computer 2, it could send a signal which goes through the hub,
+and to computer 2. However, if other hosts are connected to the hub, they get the
+signal too, since a hub is a multi-port repeater, and would just regenerate the
+signal to all the ports.
+
+----
+
+A bridge sits between hub-connected hosts. Bridges only have two ports,
+to connect each hub. People on one side of the bridge can communicate
+without the other side knowing. Bridges know which hosts are on which 
+side of the bridge, so if two hosts need to communicate, the bridge
+only sends signals to where necessary.
+
+
+---
+
+A switch is a combo of a hub and bridge. They are like hubs because hosts
+can connect to them through its ports. They are like bridges because
+they can learn which hosts are on each port. The switch is the best
+because if two hosts need to communicate, it knows to only send and
+receive information between those two hosts only. Not like a repeater
+that would send the package across all of its ports.
+
+Switches facilitate communication within a network.
+
+--
+
+**Networks share the same IP address space depending on the category,
+as shown above in the network section.
+
+----
+
+So we learned that switches facillitate communication between hosts
+within a certain network. There can be mulitple networks within a space,
+just like the classroom analogy. What if a host in the biology classroom
+wants to talk to another host in the computer science classroom, but they
+are a part of two different networks? This is where the router kicks in.
+
+Routers facilitate communication between networks. Ultimately, we will
+need the router to connect your network to the network of networks, the
+internet.
+
+Routers are a good place to enforce security policies, due to them being
+the boundary between networks. If biology computer did wanna communicate
+with computer science computer, it would have to go through the router,
+and the router could redirect, filter, and make sure things are secure.
+
+Just like a bridge knows which hosts are on what sides of it, a router
+knows what networks are on either side, as well as knowing where the
+internet is. These paths to these networks are called routes, which 
+are stored in a routing table.
+
+A gateway is each host's way out of their local network. So if biology
+wants to talk with CS, it would have to go through the default gateway
+that the router has stored in order to have its package travel through
+to CS.
+
+So basically, communicating with things far away is at max facilitated by
+communication through routers.
+
+---
+
+So let's take a bird's eye view of switching and routing. These are the two
+main performing operations.
+Routing is the process of moving data between networks.
+Switching is the process of moving data within networks.
+
+<!--On to the third video!!!-->

@@ -1,0 +1,42 @@
+We will explain how hosts communicate through two scenarios:
+
+1. Hosts connected directly to each other.
+  Basically two hosts in the SAME network
+2. Hosts connected to each other through a router.
+  Basically host talking to host in a foriegn network.
+
+-----Situation 1-----
+So Host A and B are directly connected. Both of them have
+a NIC, and therefore a MAC address.
+Both hosts have a IP and subnet mask (a subnet masks identifies
+the size of the IP network.)
+
+Host A has data to send to B. Host A knows the IP address
+of B. And Host A knows B is in its network.
+  The user could have typed: ping 'some ip address'
+  Or it was acquired through DNS (conversion of domain name
+  to IP).
+
+Host A will create a layer 3 packet, then add a layer 2 thing
+to it. The problem is host A doesn't know B's MAC address. How
+do we get around this?
+
+Host A will use ARP, which links a layer 3 address to a particular
+layer 2 address. The ARP pretty much says: 
+
+"If anyone out there has the IP 'blank blank', send me your MAC.
+My IP is __ and my MAC is __. "
+
+This ARP is a broadcast, so it's sent to everyone on the network. The
+dest MAC address on a ARP request is ffff.ffff.ffff, which is meant
+for everyone on the network.
+
+There are things called ARP caches. Each host has one, and they include
+a storage of all the IP and MAC pairings of other hosts. Once the ARP 
+request reaches B and Host A and B communicate, both A and B's ARP
+cache will be populated with each other's IP and MAC pair.
+
+Once the ARP request is done, Host A can now finish up the dest MAC
+that was required initially to send the data.
+
+<Video 6: covering situation 2>

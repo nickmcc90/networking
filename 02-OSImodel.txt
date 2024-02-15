@@ -1,0 +1,84 @@
+Remember that the purpose of networking is to allow to hosts to share data
+with one another. Just like how English has rules to follow, networking
+has rules too. They are divided into seven layers.
+
+If all of the seven layers are working, then the hosts can share data.
+Let's see how each layers allows two hosts to share data.
+
+-----Layer 1 - physical-----
+Any technology that transfers computer data (1's and 0's) between hosts
+is a layer 1 thing. This is layer 1's goal: transporting bits.
+This is like ethernet cables, fiber cables, even wifi. Repeaters and hubs
+are layer 1 because they transport bits to hosts.
+
+-----Layer 2 - data link-----
+Whatever the wire (physical layer) is connected to is layer 2, or a data
+link. Ex: NIC - network interface cards and Wi-Fi Access Cards. Layer 2's
+goal: take bits from one NIC to another NIC, hop-to-hop.
+
+To do this, it uses MAC addresses. Every NIC has a unique MAC address.
+
+Switches are layer 2 as well. Switches allow the NICs to hop info to
+another NIC. They connect to messaging hosts. Routers have MAC addresses
+too.
+
+-----Layer 3 - network-----
+As we know, each host has its own IP address. Network is responsible
+for ensuring end-to-end delivery. Making sure stuff gets sent from one
+IP from host 1 to another IP at host 2.
+
+Anything with an IP can be considered layer 3. Routers are layer 3 because
+they aid in completing the end-to-end process. Hosts are layer 3 because they
+are the start and end. IP addresses are layer 3.
+
+Why do we need both IP and MAC addresses? They both provided information.
+
+If host 1 needs to send data to host 2, it'll put some layer 3 data on top
+of it to tell its source IP and destination IP. In order to get to the dest,
+we will need to add and remove layer 2 information as we go until we finish.
+So to travel from host 1 to the first router, we'll need the src and dest MAC
+addresses, and etc for each checkpoint.
+
+Remember: Layer 3 - end-to-end, Layer 2 - hop-top-hop.
+
+We will be talking about ARP (Address Resolution Protocol) later. This ties
+layer 2 and layer 3 together.
+
+
+-----Layer 4 - Transport-----
+Service-to-service.
+So, a person is using a computer. They may have a web browser open, a chat
+log as well, and at the same time, they could have Minecraft open. Now,
+Layer 2 (MAC) and Layer 3 (IP) are receive and sending data from the internet,
+and the data needs to come and go from these programs that are open.
+How do we make sure the right program receives the right package?
+
+Layer 4 distinguishes data streams and makes sure the right program receives
+the right data. Its method of accomplishing this goal is using ports. There are
+two main ports, TCP and UDP, but they will be discussed later. The data package
+in addition to having a layer 2 and layer 3 header on it will also have a layer
+4 header telling what port (what program) shall get the data.
+
+When a client requests info from a server, it'll randomly select a source port,
+and then put down the destination port of the server. It does a random selection
+of its src port because it may be sending requests to many ports, and it'll know
+specific requests based on the unique port that it chose.
+
+
+
+Layers 5, 6, and 7. The distinction between these is somewhat vague. Each application
+has the freedom to incorporate these layers as they chose. These 3 layers are
+considered as a single universal application layer. Layers 1-4 are the most
+important for understanding how data flows.
+
+
+----THE PROCESS OF SENDING DATA----
+Layer 5 Session, Layer 6 Presentation, and Layer 7 Application, are going to
+create a package to be sent. It gets sent to layer 4 to tack on a src and dest port.
+Data + port data in this stage is called a segment. Then, it gets sent to layer
+3 to tack on src and dest IP address data. This combo is called a packet. Sent to
+layer 2 now, and this combo is called a frame. This gets put on the wire. This process
+is called ENCAPSULATION. This is what clients do.
+
+Servers do DE-ENCAPSULATION, which is the opposite process. It receives on the wire,
+checks the mac address, the ip address, the port, and the app processes the data.

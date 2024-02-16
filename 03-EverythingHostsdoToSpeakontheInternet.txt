@@ -8,7 +8,7 @@ We will explain how hosts communicate through two scenarios:
 -----Situation 1-----
 So Host A and B are directly connected. Both of them have
 a NIC, and therefore a MAC address.
-Both hosts have a IP and subnet mask (a subnet masks identifies
+Both hosts have a IP and subnet mask (a subnetmask identifies
 the size of the IP network.)
 
 Host A has data to send to B. Host A knows the IP address
@@ -40,3 +40,30 @@ Once the ARP request is done, Host A can now finish up the dest MAC
 that was required initially to send the data.
 
 <Video 6: covering situation 2>
+
+---Situation 2---
+
+Now, a router (or foriegn network), is between two hosts, Host A and Host C.
+The hosts and router all have IPs and MACs.
+
+Host A knows Host C's IP address, this is because the user typed it in or its in the data to be sent.
+Host A knows that C is in a foreign network too because it looks if its IP address or subnet is vastly
+different from C's.
+
+Host A creates a layer 3 header. It needs to create a layer 2 but can't (just like last scenario)
+because it doesn't have the router's MAC address. However, A knows the routers IP address because
+this information is in the default gateway. We talked about this before.
+
+Host A will shoot out an ARP request to the router to get the MAC address. Then it can complete the package
+sending to the router. As far as we are concerned, Host A knows that it did all it could do to get its package
+off to Host C, it'll trust the router. So basically with anyone that Host A tries to communicate with, it only
+needs the router that it's connected to's MAC, which it already found out. This goes in the ARP cache.
+
+
+---Recap---
+So basically, if Host A's target host is:
+
+Local:  Sends an ARP to resolve target IP
+Foriegn: Sends an ARP to resolve Default Gateway IP (router)
+
+<Video 7: now, create a new file.>
